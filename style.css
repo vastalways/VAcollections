@@ -1,0 +1,70 @@
+html, body { height: 100%; margin: 0; padding: 0; font-family: 'Glacial Indifference', Arial, sans-serif; background-color: #ffffff; color: #333333; overflow: hidden; }
+.one-page-layout { display: flex; height: 100vh; width: 100vw; }
+.brand-panel { flex: 0 0 28%; background-color: #f8f8f8; padding: 25px 20px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between; border-right: 1px solid #eaeaea; }
+.brand-panel header { text-align: center; }
+.brand-logo { max-width: 155px; width: 100%; height: auto; margin-bottom: 10px; }
+.brand-panel h1 { margin: 0; font-size: 2.1rem; letter-spacing: 4px; text-transform: uppercase; font-weight: 700; color: #111; }
+.brand-panel .tagline { margin: 8px 0 0 0; font-size: 0.95rem; font-style: italic; color: #555; letter-spacing: 1px; text-align: center; white-space: nowrap; }
+.about-section { text-align: center; border-top: 1px solid #dddddd; padding-top: 15px; margin: 15px 0; }
+.about-section h2 { font-size: 1.2rem; text-transform: uppercase; letter-spacing: 2px; margin: 0 0 8px 0; }
+.about-section p { font-size: 0.9rem; line-height: 1.5; color: #444; margin: 0; }
+.contact-footer { border-top: 1px solid #dddddd; padding-top: 15px; text-align: center; }
+.icon-row { display: flex; justify-content: center; gap: 20px; margin-bottom: 12px; }
+.icon-link { font-size: 1.3rem; color: #444; text-decoration: none; }
+.icon-link:hover { color: #111; }
+.phone-item { font-size: 0.9rem; color: #444; letter-spacing: 0.5px; display: flex; align-items: center; justify-content: center; gap: 8px; }
+.catalog-panel { flex: 0 0 72%; display: flex; flex-direction: column; box-sizing: border-box; }
+.collection-banner { text-align: center; padding: 20px; background-color: #fff; border-bottom: 1px solid #eaeaea; }
+.collection-banner h2 { font-size: 1.6rem; font-weight: bold; letter-spacing: 3px; margin: 0; color: #111; }
+.collection-banner p { font-size: 0.9rem; letter-spacing: 1px; text-transform: uppercase; color: #777; margin: 4px 0 0 0; }
+.categories-grid { display: flex; flex: 1; height: calc(100% - 80px); }
+.category-column { flex: 1; display: flex; flex-direction: column; padding: 20px; box-sizing: border-box; border-right: 1px solid #eaeaea; }
+.category-column:last-child { border-right: none; }
+.bg-men { background-color: #f0f2f5; }     
+.bg-women { background-color: #f7f4ef; }   
+.bg-kids { background-color: #eff2f0; }    
+.category-column h3 { font-size: 1.4rem; text-transform: uppercase; letter-spacing: 2px; margin: 0 0 15px 0; color: #111; text-align: center; }
+.image-showcase { width: 100%; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+.main-photo-box { width: 100%; flex: 1; min-height: 160px; background-color: #fff; overflow: hidden; border-radius: 4px; box-shadow: 0 4px 12px rgba(0,0,0,0.04); }
+.main-photo-box img { width: 100%; height: 100%; object-fit: cover; }
+.preview-shelf { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; width: 100%; }
+.small-photo-box { aspect-ratio: 1 / 1; background-color: #fff; overflow: hidden; border-radius: 4px; box-shadow: 0 2px 6px rgba(0,0,0,0.03); }
+.small-photo-box img { width: 100%; height: 100%; object-fit: cover; }
+.details-box { width: 100%; margin-top: 20px; box-sizing: border-box; }
+.details-box .description { font-size: 0.9rem; line-height: 1.4; color: #555; margin: 0 0; height: 4.2em; overflow: hidden; text-align: left; }
+.details-box .price-line { font-size: 1.1rem; font-weight: bold; color: #111; letter-spacing: 1px; border-top: 1px solid rgba(0,0,0,0.08); padding-top: 10px; margin-top: 10px; text-align: left; }
+@media (max-width: 950px) {
+    html, body { overflow: auto; height: auto; }
+    .one-page-layout { flex-direction: column; height: auto; }
+    .brand-panel, .catalog-panel { flex: none; width: 100%; }
+    .categories-grid { flex-direction: column; height: auto; }
+    .category-column { border-right: none; border-bottom: 1px solid #eaeaea; padding: 40px 20px; }
+    .main-photo-box { height: 350px; }
+}
+/* Optimized video bounding box rules specifically for Safari */
+.main-photo-box {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative; /* Fixes a rendering bug in Safari's layout engine */
+}
+
+/* Forces any video inside the main box to match the container dimensions */
+.main-photo-box video {
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    max-height: 100%;
+    object-fit: cover; /* Clips the video perfectly without warping your clothing proportions */
+    
+    /* Safari Specific Properties */
+    -webkit-transform: translate3d(0,0,0); /* Forces Apple devices to render the layout via hardware acceleration */
+    transform: translate3d(0,0,0);
+}
+/* Ensures clickable thumbnails maintain structure and show a pointer cursor */
+.thumbnail-link {
+    display: block;
+    text-decoration: none;
+    width: 100%;
+    cursor: pointer;
+

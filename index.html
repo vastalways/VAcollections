@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>VAST ALWAYS | Official Catalog</title>
+ <link rel="preconnect" href="https://googleapis.com">
+ <link rel="preconnect" href="https://gstatic.com" crossorigin>
+ <link href="https://googleapis.com" rel="stylesheet">
+ <style>
+   /* --- SYSTEM RESET & FOUNDATIONS --- */
+   html, body { height: 100%; margin: 0; padding: 0; font-family: 'Glacial Indifference', Arial, sans-serif; background-color: #ffffff; color: #333333; overflow: hidden; }
+   .one-page-layout { display: flex; height: 100vh; width: 100%; }
+   .brand-panel { flex: 0 0 28%; background-color: #f8f8f8; padding: 25px 20px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between; border-right: 1px solid #eaeaea; }
+   .brand-panel header { text-align: center; }
+   .brand-logo { max-width: 155px; width: 100%; height: auto; margin-bottom: 10px; }
+   .brand-panel h1 { margin: 0; font-size: 2.1rem; letter-spacing: 4px; text-transform: uppercase; font-weight: 700; color: #111; }
+   .brand-panel .tagline { margin: 8px 0 0 0; font-size: 0.95rem; font-style: italic; color: #555; letter-spacing: 1px; text-align: center; white-space: nowrap; }
+   .about-section { text-align: center; border-top: 1px solid #dddddd; padding-top: 15px; margin: 15px 0; }
+   .about-section h2 { font-size: 1.2rem; text-transform: uppercase; letter-spacing: 2px; margin: 0 0 8px 0; text-align: center; }
+   .about-section p { font-size: 0.9rem; line-height: 1.5; color: #444; margin: 0; text-align: center; }
+   .contact-footer { border-top: 1px solid #dddddd; padding-top: 15px; text-align: center; }
+   .contact-footer h2 { font-size: 1.2rem; text-transform: uppercase; letter-spacing: 2px; margin: 0 0 10px 0; text-align: center; }
+   .contact-line { display: flex; align-items: center; font-size: 0.85rem; margin-bottom: 12px; color: #444444; letter-spacing: 0.5px; justify-content: center; }
+   .contact-icon-tag { font-weight: bold; color: #111111; width: 40px; margin-right: 8px; font-size: 0.85rem; display: inline-block; text-align: center; }
+   .contact-line a { color: #444444; text-decoration: none; }
+   .contact-line a:hover { text-decoration: underline; color: #111111; }
+   
+   .catalog-panel { flex: 0 0 72%; display: flex; flex-direction: column; box-sizing: border-box; }
+   .collection-banner { text-align: center; padding: 20px; background-color: #fff; border-bottom: 1px solid #eaeaea; }
+   .collection-banner h2 { font-size: 1.6rem; font-weight: bold; letter-spacing: 3px; margin: 0; color: #111; }
+   .collection-banner p { font-size: 0.9rem; letter-spacing: 1px; text-transform: uppercase; color: #777; margin: 4px 0 0 0; }
+   .categories-grid { display: flex; flex: 1; height: calc(100% - 80px); }
+   .category-column { flex: 1; display: flex; flex-direction: column; padding: 20px; box-sizing: border-box; border-right: 1px solid #eaeaea; }
+   .category-column:last-child { border-right: none; }
+   
+   /* BACKGROUND THEMES */
+   .bg-men { background-color: #f0f2f5; } 
+   .bg-women { background-color: #f7f4ef; } 
+   .bg-kids { background-color: #eff2f0; } 
+   .category-column h3 { font-size: 1.4rem; text-transform: uppercase; letter-spacing: 2px; margin: 0 0 15px 0; color: #111; text-align: center; }
+   
+   /* --- MAIN SHOWCASE LAYOUT CODES --- */
+   .image-showcase { width: 100%; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+   .main-photo-box { width: 100%; flex: 1; min-height: 160px; background-color: #fff; overflow: hidden; border-radius: 4px; box-shadow: 0 4px 12px rgba(0,0,0,0.04); display: flex; flex-direction: column; position: relative; }
+   .main-photo-box img { width: 100%; height: 100%; object-fit: cover; }
+   
+   .preview-shelf { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; width: 100%; }
+   .small-photo-box { aspect-ratio: 1 / 1; background-color: #fff; overflow: hidden; border-radius: 4px; box-shadow: 0 2px 6px rgba(0,0,0,0.03); }
+   .small-photo-box img { width: 100%; height: 100%; object-fit: cover; }
+   
+   /* --- PRODUCT DETAILS CONTAINER --- */
+   .details-box { width: 100%; margin-top: 20px; box-sizing: border-box; }
+   .details-box .description { font-size: 0.9rem; line-height: 1.4; color: #555; margin: 0 0; height: 4.2em; overflow: hidden; text-align: left; }
+   .details-box .price-line { font-size: 1.1rem; font-weight: bold; color: #111; letter-spacing: 1px; border-top: 1px solid rgba(0,0,0,0.08); padding-top: 10px; margin-top: 10px; text-align: left; }
+
+   @media (max-width: 950px) {
+     html, body { overflow: auto; height: auto; }
+     .one-page-layout { flex-direction: column; height: auto; }
+     .brand-panel, .catalog-panel { flex: none; width: 100%; }
+     .categories-grid { flex-direction: column; height: auto; }
+     .category-column { border-right: none; border-bottom: 1px solid #eaeaea; padding: 40px 20px; }
+     .main-photo-box { height: 350px; }
+   }
+ </style>
+</head>
+<body>
+
+ <div class="one-page-layout">
+ 
+   <!-- SIDEBAR -->
+   <div class="brand-panel">
+     <div class="brand-top-content">
+       <header>
+         <img src="logo.png" alt="VAST ALWAYS Logo" class="brand-logo">
+         <h1>VAST ALWAYS</h1>
+         <p class="tagline">Limitless Grace. Timeless Design</p>
+       </header>
+     </div>
+     
+     <section class="about-section">
+       <h2>Our Story</h2>
+       <p>VAST ALWAYS was born from the initials of Via and Alem—a shared dream to build something lasting together. Beyond our names, it reminds us of God's vast and unending grace, His faithfulness that never fails, and the promise that we are never forgotten.</p>
+     </section>
+     
+     <div class="contact-footer">
+       <h2>Contact Us</h2>
+       <div class="contact-line"><span class="contact-icon-tag">FB:</span><a href="https://facebook.com" target="_blank">www.facebook.com/vastalways</a></div>
+       <div class="contact-line"><span class="contact-icon-tag">IG:</span><a href="https://instagram.com" target="_blank">www.instagram.com/vastalways</a></div>
+       <div class="contact-line"><span class="contact-icon-tag">G:</span><a href="mailto:vastalways@gmail.com">vastalways@gmail.com</a></div>
+       <div class="contact-line"><span class="contact-icon-tag">📱 :</span><span>09691622658</span></div>
+     </div>
+   </div>
+   
+   <!-- RIGHT CATALOG PANEL -->
+   <div class="catalog-panel">
+     <div class="collection-banner">
+       <h2>"The Beginning of Always.."</h2>
+       <p>First Launch Collection</p>
+     </div>
+     
+     <div class="categories-grid">
+     
+       <!-- ADULT MEN SECTION (DIAGONAL LARGE PHOTOS WITH SIDE BUTTONS) -->
+<div class="category-column bg-men">
+  <h3>Adult Men</h3>
+  
+  <!-- Image Showcase Area: Hard-locked at 75% height to maintain alignment with the Women section -->
+  <div class="image-showcase" style="height: 75%; display: flex; flex-direction: column; gap: 10px; flex: none;">
+    
+    <!-- FIRST ROW: Longer Photo on the Left (70% width), Button on the Right (30% width) -->
+    <div style="display: flex; flex-direction: row; gap: 10px; height: calc(50% - 5px); width: 100%;">
+      <!-- Large Photo 1 (Takes up 70% of row width) -->
+      <div style="flex: 7; background-color: #fff; border-radius: 4px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.04); height: 100%;">
+        <img src="19.png" style="width: 100%; height: 100%; object-fit: contain; display: block;">
+      </div>
+      
+      <!-- Clickable Button 1 (Takes up 30% of row width next to Photo 1) -->
+      <div style="flex: 3; display: flex; align-items: center; justify-content: center; height: 100%;">
+        <a href="men.html" style="width: 100%; padding: 12px 0; background-color: #111111; color: #ffffff; text-decoration: none; text-align: center; font-size: 0.75rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; border-radius: 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.08); cursor: pointer;">
+          More Designs
+        </a>
+      </div>
+    </div>
+    
+    <!-- SECOND ROW: Button on the Left (30% width), Longer Photo on the Right (70% width) to create the Diagonal layout -->
+    <div style="display: flex; flex-direction: row; gap: 10px; height: calc(50% - 5px); width: 100%;">
+      <!-- Clickable Button 2 (Takes up 30% of row width next to Photo 2) -->
+      <div style="flex: 3; display: flex; align-items: center; justify-content: center; height: 100%;">
+        <a href="men2.html" style="width: 100%; padding: 12px 0; background-color: #111111; color: #ffffff; text-decoration: none; text-align: center; font-size: 0.75rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; border-radius: 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.08); cursor: pointer;">
+          More Designs
+        </a>
+      </div>
+      
+      <!-- Large Photo 2 (Takes up 70% of row width) -->
+      <div style="flex: 7; background-color: #fff; border-radius: 4px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.04); height: 100%;">
+        <img src="M1.png" style="width: 100%; height: 100%; object-fit: contain; display: block;">
+      </div>
+    </div>
+    
+  </div> <!-- End Image Showcase -->
+  
+  <!-- Product Details Block: Locked at 25% height to exactly match the Women section spacing -->
+  <div class="details-box" style="height: 25%; display: flex; flex-direction: column; justify-content: flex-start; margin-top: 15px; margin-bottom: 0px;">
+    
+    <div class="description" style="margin-bottom: 5px; height: auto; overflow: visible;">Designed for comfort and effortless style. Our men's pieces blend casual silhouettes with structural integrity, offering an elevated approach to everyday wear.</div>
+
+    <div class="price-line" style="margin-top: auto; padding-top: 5px;">Price Sweatshirt: ₱750</div>
+<div class="price-line" style="margin-top: auto; padding-top: 5px;">Price Lux Oversized Tee: ₱580</div>
+  </div>
+</div>
+
+       
+     <!-- ADULT WOMEN SECTION (DIAGONAL LONGER PHOTOS WITH SIDE BUTTONS) -->
+<div class="category-column bg-women">
+  <h3>Adult Women</h3>
+  
+  <!-- Image Showcase Area: Increased height to 75% to make the diagonal photos noticeably longer -->
+  <div class="image-showcase" style="height: 75%; display: flex; flex-direction: column; gap: 10px; flex: none;">
+    
+    <!-- FIRST ROW: Longer Photo on the Left (70% width), Button on the Right (30% width) -->
+    <div style="display: flex; flex-direction: row; gap: 10px; height: calc(50% - 5px); width: 100%;">
+      <!-- Large Photo 1 (Takes up 70% of row width) -->
+      <div style="flex: 7; background-color: #fff; border-radius: 4px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.04); height: 100%;">
+        <img src="wA.png" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+      </div>
+      
+      <!-- Clickable Button 1 (Takes up 30% of row width next to Photo 1) -->
+      <div style="flex: 3; display: flex; align-items: center; justify-content: center; height: 100%;">
+        <a href="women.html" style="width: 100%; padding: 12px 0; background-color: #111111; color: #ffffff; text-decoration: none; text-align: center; font-size: 0.75rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; border-radius: 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.08); cursor: pointer;">
+          More Designs
+        </a>
+      </div>
+    </div>
+    
+    <!-- SECOND ROW: Button on the Left (30% width), Longer Photo on the Right (70% width) -->
+    <div style="display: flex; flex-direction: row; gap: 10px; height: calc(50% - 5px); width: 100%;">
+      <!-- Clickable Button 2 (Takes up 30% of row width next to Photo 2) -->
+      <div style="flex: 3; display: flex; align-items: center; justify-content: center; height: 100%;">
+        <a href="women1.html" style="width: 100%; padding: 12px 0; background-color: #111111; color: #ffffff; text-decoration: none; text-align: center; font-size: 0.75rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; border-radius: 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.08); cursor: pointer;">
+          More Designs
+        </a>
+      </div>
+      
+      <!-- Large Photo 2 (Takes up 70% of row width) -->
+      <div style="flex: 7; background-color: #fff; border-radius: 4px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.04); height: 100%;">
+        <img src="wB.png" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+      </div>
+    </div>
+    
+  </div> <!-- End Image Showcase -->
+  
+  <!-- Product Details Block: Adjusted to 25% height to accommodate the longer photos above -->
+  <div class="details-box" style="height: 25%; display: flex; flex-direction: column; justify-content: flex-start; margin-top: 15px; margin-bottom: 0px;">
+
+    
+    <div class="description" style="margin-bottom: 5px; height: auto; overflow: visible;">Embrace a collection focused on modern grace and fluid tailoring. Crafted to move beautifully with you, these staples bring simple sophistication to seasonal wardrobing.</div>
+    <div class="price-line" style="margin-top: auto; padding-top: 5px;">Price Classic: ₱370</div>
+<div class="price-line" style="margin-top: auto; padding-top: 5px;">Price Luxury: ₱370</div>
+  </div>
+</div>
+
+
+       
+       <!-- KIDS SECTION -->
+       <div class="category-column bg-kids">
+         <h3>Kids Section</h3>
+         
+         <!-- YOUR THREE PERFECT PHOTOS HARD-LOCKED TO EXACTLY 65% OF HEIGHT -->
+         <div style="width: 100%; display: flex; flex-direction: row; gap: 10px; height: 65%;">
+
+          <!-- Left Side: Main Larger Photo (Takes 1.5x width) -->
+           <!-- UPDATED CORES WITH FLEX-SHRINK PROTECTION -->
+<div style="flex: 1.5; display: flex; flex-direction: column; gap: 10px; height: 100%;">
+  
+  <!-- Upper Part: Video Element -->
+  <div style="height: calc(50% - 5px); flex: none; background-color: #fff; border-radius: 4px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.04);">
+    <video src="IMG_6429.mov" autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover; display: block;"></video>
+  </div>
+  
+  <!-- Bottom Part: Another Photo Element -->
+  <div style="height: calc(50% - 5px); flex: none; background-color: #fff; border-radius: 4px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.04);">
+    <img src="luksCaleb.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  </div>
+
+
+</div>
+           
+           <!-- Right Side: Secondary Photos (Stacked vertically, exactly identical sizes) -->
+           <div style="flex: 1; display: flex; flex-direction: column; gap: 10px; height: 100%;">
+             
+             <!-- Top Small Photo -->
+             <div style="height: calc(50% - 5px); background-color: #fff; border-radius: 4px; overflow: hidden; box-shadow: 0 2px 6px rgba(0,0,0,0.03);">
+               <img src="Caleb.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+             </div>
+             
+             <!-- Bottom Small Photo -->
+             <div style="height: calc(50% - 5px); background-color: #fff; border-radius: 4px; overflow: hidden; box-shadow: 0 2px 6px rgba(0,0,0,0.03);">
+               <img src="Luks.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+             </div>
+</div>
+         </div>
+         <div class="details-box">
+
+           <div class="description">Soft, breathable 100% cotton made for memory-making days. Designed with durability in mind without sacrificing our signature aesthetic, perfect for everyday discoveries.</div>
+           <div class="price-line">Sizes: M, XL </div>
+<div class="price-line">Color: Black, Navy Blue</div>
+<div class="price-line">Price Luxury: ₱380</div>
+         </div>
+       </div>
