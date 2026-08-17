@@ -62,6 +62,95 @@
      .category-column { border-right: none; border-bottom: 1px solid #eaeaea; padding: 40px 20px; }
      .main-photo-box { height: 350px; }
    }
+/* --- GLOBAL SOLD OUT OVERLAY STYLING --- */
+#soldOutGlobalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.4); /* Subtle white tinted background cover */
+  backdrop-filter: blur(12px); /* Smooth gaussian blur applied over all underlying catalogs */
+  -webkit-backdrop-filter: blur(12px); /* Safari engine compatibility fallback styling */
+  z-index: 999999; /* Force displays over standard body layouts and checkout modals */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+
+
+.sold-out-modal-card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 440px; /* Kept standard card sizing for universal layout */
+  padding: 30px 20px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  font-family: 'Glacial Indifference', Arial, sans-serif;
+  animation: modalFadeUp 0.4s ease-out;
+}
+
+/* 🔄 UPDATED FOR PORTRAIT RATIO (9:16 VERTICAL ASPECT) */
+.sold-out-video-container {
+  width: 100%;
+  max-width: 280px; /* Restricts width so it scales perfectly like a vertical phone screen */
+  aspect-ratio: 9 / 16; /* Locks the box into portrait smartphone dimensions */
+  margin: 0 auto 20px auto; /* Centers the portrait box inside the container card */
+  background-color: #f8f8f8;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.sold-out-video-container video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Forces video content to fill the portrait container completely */
+  display: block;
+}
+
+
+.sold-out-video-container video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.sold-out-modal-card h2 {
+  margin: 0 0 10px 0;
+  font-size: 1.6rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #111111;
+}
+
+.sold-out-modal-card .tagline {
+  margin: 0 0 15px 0;
+  font-size: 0.95rem;
+  font-style: italic;
+  color: #555555;
+  line-height: 1.4;
+}
+
+.sold-out-modal-card .announcement {
+  margin: 0;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: bold;
+  color: #888888;
+}
+
+@keyframes modalFadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
  </style>
 </head>
 <body>
@@ -142,11 +231,21 @@
   
   <!-- Product Details Block: Locked at 25% height to exactly match the Women section spacing -->
   <div class="details-box" style="height: 25%; display: flex; flex-direction: column; justify-content: flex-start; margin-top: 15px; margin-bottom: 0px;">
+
+<!-- Inside your bg-men .price-line container, insert this button string right next to the price text -->
     
     <div class="description" style="margin-bottom: 5px; height: auto; overflow: visible;">Designed for comfort and effortless style. Our men's pieces blend casual silhouettes with structural integrity, offering an elevated approach to everyday wear.</div>
 
-    <div class="price-line" style="margin-top: auto; padding-top: 5px;">Price Sweatshirt: ₱750</div>
-<div class="price-line" style="margin-top: auto; padding-top: 5px;">Price Lux Oversized Tee: ₱580</div>
+<div class="price-line" style="margin-top: auto; padding-top: 5px;
+    <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+    <span style="font-size: 0.95rem; font-weight: bold; color: #111;">Lux Sweatshirt: ₱750</span>
+    <button class="cart-btn" data-product="Adult Men Design 1" style="background-color: #111111; color: #ffffff; border: none; padding: 6px 12px; font-family: sans-serif; font-size: 0.7rem; font-weight: bold; text-transform: uppercase; border-radius: 4px; cursor: pointer;" onclick="openCheckout('Adult Men Design 1', 750)">Add to Cart</button>
+  </div>
+<div class="price-line" style="margin-top: auto; padding-top: 5px;
+<div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+    <span style="font-size: 0.95rem; font-weight: bold; color: #111;">Oversized Tee: ₱580</span>
+    <button class="cart-btn" data-product="Adult Men Design 2" style="background-color: #111111; color: #ffffff; border: none; padding: 6px 12px; font-family: sans-serif; font-size: 0.7rem; font-weight: bold; text-transform: uppercase; border-radius: 4px; cursor: pointer;" onclick="openCheckout('Adult Men Design 2', 580)">Add to Cart</button>
+  </div>
   </div>
 </div>
 
@@ -195,8 +294,18 @@
 
     
     <div class="description" style="margin-bottom: 5px; height: auto; overflow: visible;">Embrace a collection focused on modern grace and fluid tailoring. Crafted to move beautifully with you, these staples bring simple sophistication to seasonal wardrobing.</div>
-    <div class="price-line" style="margin-top: auto; padding-top: 5px;">Price Classic: ₱370</div>
-<div class="price-line" style="margin-top: auto; padding-top: 5px;">Price Luxury: ₱550</div>
+
+    <div class="price-line" style="margin-top: auto; padding-top: 5px;
+    <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+    <span style="font-size: 0.95rem; font-weight: bold; color: #111;">Classic Crop Tee: ₱370</span>
+    <button class="cart-btn" data-product="Adult Women Design 1" style="background-color: #111111; color: #ffffff; border: none; padding: 6px 12px; font-family: sans-serif; font-size: 0.7rem; font-weight: bold; text-transform: uppercase; border-radius: 4px; cursor: pointer;" onclick="openCheckout('Adult Women Design 1', 370)">Add to Cart</button>
+  </div>
+<div class="price-line" style="margin-top: auto; padding-top: 5px;
+<div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+    <span style="font-size: 0.95rem; font-weight: bold; color: #111;">Lux Crop Tee: ₱550</span>
+    <button class="cart-btn" data-product="Adult Women Design 2" style="background-color: #111111; color: #ffffff; border: none; padding: 6px 12px; font-family: sans-serif; font-size: 0.7rem; font-weight: bold; text-transform: uppercase; border-radius: 4px; cursor: pointer;" onclick="openCheckout('Adult Women Design 2', 550)">Add to Cart</button>
+  </div>
+
   </div>
 </div>
 
@@ -246,5 +355,343 @@
            <div class="price-line">Sizes: M, XL </div>
 <div class="price-line">Color: Black, Navy Blue</div>
 <div class="price-line">Price Luxury: ₱380</div>
+<!-- Inside your bg-kids .price-line container, insert this button string right next to the price text -->
+<button class="cart-btn" data-product="Kids Apparel Set" style="background-color: #111111; color: #ffffff; border: none; padding: 7px 12px; font-family: sans-serif; font-size: 0.75rem; font-weight: bold; text-transform: uppercase; border-radius: 4px; cursor: pointer;" onclick="openCheckout('Kids Apparel Set', 550)">Add to Cart</button>
+
+
          </div>
        </div>
+
+<!-- =================================================== -->
+<!-- FLOATING CHECKOUT OVERLAY MODAL (PASTE ABOVE </body>) -->
+<!-- =================================================== -->
+<div id="checkoutOverlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6); z-index: 99999; align-items: center; justify-content: center;">
+  <div style="background-color: #ffffff; border-radius: 6px; width: 90%; max-width: 420px; padding: 30px; box-sizing: border-box; box-shadow: 0 10px 30px rgba(0,0,0,0.15); position: relative; color: #333333; font-family: sans-serif; text-align: left;">
+    <span onclick="closeCheckout()" style="position: absolute; right: 20px; top: 15px; font-size: 1.5rem; cursor: pointer; color: #888888; font-weight: bold;">&times;</span>
+    
+    <!-- Step A: Customer Entry Fields Form -->
+    <form id="orderForm" onsubmit="submitToGoogleSheet(event)">
+      <h4 id="modalItemTitle" style="margin: 0 0 5px 0; font-size: 1.4rem; text-transform: uppercase; letter-spacing: 2px; font-family: Arial, sans-serif;">Checkout Order</h4>
+      <p style="margin: 0 0 20px 0; font-size: 0.85rem; color: #666666; line-height: 1.4;">Please enter your delivery details to secure your reservation order.</p>
+      
+      <!-- Hidden System Tracking Strings -->
+      <input type="hidden" id="trackerItemName">
+      <input type="hidden" id="trackerItemPrice">
+
+      <div style="margin-bottom: 16px;">
+        <label style="display: block; font-size: 0.8rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px;">Full Name</label>
+        <input type="text" id="custName" required placeholder="e.g. Maria Santos" style="width: 100%; padding: 10px; border: 1px solid #cccccc; border-radius: 4px; box-sizing: border-box; font-size: 0.9rem;">
+      </div>
+      
+      <div style="margin-bottom: 16px;">
+        <label style="display: block; font-size: 0.8rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px;">Contact Number</label>
+        <input type="tel" id="custContact" required placeholder="e.g. 09691622658" style="width: 100%; padding: 10px; border: 1px solid #cccccc; border-radius: 4px; box-sizing: border-box; font-size: 0.9rem;">
+      </div>
+      
+      <div style="margin-bottom: 16px;">
+        <label style="display: block; font-size: 0.8rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px;">Delivery Address</label>
+        <textarea id="custAddress" required placeholder="Complete home street, barangay, city/province" style="width: 100%; padding: 10px; border: 1px solid #cccccc; border-radius: 4px; box-sizing: border-box; height: 60px; resize: none; font-size: 0.9rem;"></textarea>
+      </div>
+      
+      <button type="submit" id="submitFormBtn" style="width: 100%; background-color: #111111; color: #ffffff; border: none; padding: 14px 0; font-size: 0.9rem; font-weight: bold; text-transform: uppercase; letter-spacing: 2px; border-radius: 4px; cursor: pointer;">Submit Order Details</button>
+    </form>
+
+    <!-- Step B: Post-Submission Done View Layer -->
+    <div id="successView" style="display: none; text-align: center; padding: 10px 0;">
+      <h5 style="font-size: 1.3rem; margin: 0 0 10px 0; letter-spacing: 1px; text-transform: uppercase; font-family: Arial, sans-serif;">Order Saved!</h5>
+      <p style="font-size: 0.85rem; line-height: 1.5; color: #444444; margin-bottom: 20px;">Your order has been registered into our database.<br><br>To finalize processing, we are requiring a <strong>50% Downpayment.</strong> For further details, inquiries and verification, click below button to message us directly to our Facebook Messenger page.</p>
+      <a href="#" id="fbMessengerLink" target="_blank" style="display: block; width: 100%; text-align: center; background-color: #0078ff; color: #ffffff; padding: 14px 0; border-radius: 4px; font-weight: bold; text-decoration: none; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; box-shadow: 0 4px 10px rgba(0,120,255,0.2);">Send us DM to Messenger</a>
+    </div>
+  </div>
+</div>
+<!-- =================================================== -->
+<!-- TRANSIT SCRIPTS AUTOMATION ENGINE (PLACE BELOW MODAL) -->
+<!-- =================================================== -->
+<script>
+  function openCheckout(itemName, itemPrice) {
+    document.getElementById('modalItemTitle').innerText = "Checkout: " + itemName;
+    document.getElementById('trackerItemName').value = itemName;
+    document.getElementById('trackerItemPrice').value = itemPrice;
+    
+    // Reset overlay layout state views
+    document.getElementById('orderForm').style.display = 'block';
+    document.getElementById('successView').style.display = 'none';
+    document.getElementById('orderForm').reset();
+    
+    document.getElementById('checkoutOverlay').style.display = 'flex';
+  }
+
+  function closeCheckout() {
+    document.getElementById('checkoutOverlay').style.display = 'none';
+  }
+
+  function submitToGoogleSheet(event) {
+    event.preventDefault();
+    
+    const submitBtn = document.getElementById('submitFormBtn');
+    submitBtn.innerText = "Processing order...";
+    submitBtn.disabled = true;
+
+    const name = document.getElementById('custName').value;
+    const contact = document.getElementById('custContact').value;
+    const address = document.getElementById('custAddress').value;
+    const item = document.getElementById('trackerItemName').value;
+    const price = document.getElementById('trackerItemPrice').value;
+
+    // 🔴 PASTE: Replace the string placeholder below with your real SheetDB URL API link
+    const sheetDbApiUrl = "https://sheetdb.io/api/v1/9es18id3brva0";
+
+    const payload = {
+      data: [
+        {
+          name: name,
+          contact: contact,
+          address: address,
+          item: item,
+          price: "₱" + price,
+          status: "Pending Verification"
+        }
+      ]
+    };
+
+    fetch(sheetDbApiUrl, {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(payload)
+    })
+    .then(response => response.json())
+    .then(data => {
+      // Formats the smart pre-filled message string payload
+      const calculatedDp = price / 2;
+      const encodedMessage = encodeURIComponent(
+        `Hi VAST ALWAYS! I just submitted my order on your website catalog.\n\n` +
+        `• Name: ${name}\n` +
+        `• Item: ${item}\n` +
+        `• Total Price: ₱${price}\n` +
+        `• 50% DP Due: ₱${calculatedDp}\n\n` +
+        `Attached is my transaction receipt screenshot.`
+      );
+      
+      const messengerSmartLink = "https://m.me" + encodedMessage;
+      document.getElementById('fbMessengerLink').href = "https://facebook.com";
+
+      // Swap views inside the floating frame overlay
+      document.getElementById('orderForm').style.display = 'none';
+      document.getElementById('successView').style.display = 'block';
+    })
+    .catch(error => {
+      alert("System processing failure. Please check your data connectivity vectors.");
+      console.error('Data transit error:', error);
+    })
+    .finally(() => {
+      submitBtn.innerText = "Submit Order Details";
+      submitBtn.disabled = false;
+    });
+  </div>
+</div>
+</div>
+<!-- =================================================== -->
+<!-- REAL-TIME INVENTORY LIVE VALIDATION ENGINE (COLUMN E) -->
+<!-- =================================================== -->
+<script>
+   function checkLiveInventoryStatus() {
+    // FIXED ALTERNATE ROUTING: Uses /tabs/Inventory instead of ?sheet=Inventory
+    // 🔴 CRITICAL PASTE: Replace YOUR_API_ID_HERE with your real SheetDB API token ID string
+    const inventoryApiUrl = "https://sheetdb.io/api/v1/9es18id3brva0";
+
+    fetch(inventoryApiUrl)
+      .then(response => {
+        if (!response.ok) throw new Error("API network fetch failure");
+        return response.json();
+      })
+      .then(stockRecords => {
+        console.log("Live stock data loaded from Google Sheet:", stockRecords);
+        
+        // If SheetDB returns an error object instead of an array, stop execution
+        if (!Array.isArray(stockRecords)) {
+          console.error("SheetDB did not return a valid array. Check tab name capitalization.");
+          return;
+        }
+
+        stockRecords.forEach(row => {
+          // Check for variations of the word "status"
+          const statusValue = row.status || row.Status || row.STATUS || "";
+          const itemValue = row.item || row.Item || row.ITEM || "";
+          
+          if (statusValue.toString().trim().toUpperCase() === "SOLD OUT") {
+            
+            // Find the active button on screen matching this exact item name identifier string
+            const targetButton = document.querySelector(`.cart-btn[data-product="${itemValue.toString().trim()}"]`);
+            
+            if (targetButton) {
+              console.log("Success! Found matching item to disable:", itemValue);
+              // Safely turn the button into a greyed-out disabled state without changing box sizes
+              targetButton.innerText = "Sold Out";
+              targetButton.disabled = true;
+              targetButton.style.backgroundColor = "#cccccc";
+              targetButton.style.color = "#ffffff";
+              targetButton.style.cursor = "not-allowed";
+              targetButton.style.boxShadow = "none";
+              targetButton.removeAttribute('onclick'); // Disables modal popup checkout form triggers completely
+            }
+          }
+        });
+      })
+      .catch(err => console.error("Inventory synchronization encountered a network exception:", err));
+  }
+
+  // Instructs the browser engine to run this validation script the exact millisecond the page loads
+  window.addEventListener('DOMContentLoaded', checkLiveInventoryStatus);
+</script>
+</div>
+  </div>
+</div>
+<!-- GLOBAL SOLD OUT / COMING SOON OVERLAY -->
+<div id="soldOutGlobalOverlay">
+  <div class="sold-out-modal-card">
+    <!-- Video element placed dynamically in the middle -->
+    <div class="sold-out-video-container">
+      <video src="comingsoon.mov" autoplay loop muted playsinline></video>
+    </div>
+    
+    <!-- Custom text messages and typography below the video framework -->
+    <h2>All Items Sold Out</h2>
+    <p class="tagline">"Thank You for being part of our beginning."</p>
+    <p class="announcement">Stay tuned for our second collection.</p>
+  </div>
+</div>
+
+
+<!-- =================================================== -->
+<!-- VAST ALWAYS AUTOMATED REAL-TIME CHECKOUT & INVENTORY -->
+<!-- =================================================== -->
+<script>
+  // 👑 CRITICAL SETTING: Paste your live SheetDB API URL here 👑
+  const sheetDbApiUrl = "https://sheetdb.io/api/v1/9es18id3brva0";
+
+  // 1. OPEN CHECKOUT MODAL WINDOW
+  function openCheckout(itemName, itemPrice) {
+    document.getElementById('modalItemTitle').innerText = "Checkout: " + itemName;
+    document.getElementById('trackerItemName').value = itemName;
+    document.getElementById('trackerItemPrice').value = itemPrice;
+    
+    document.getElementById('orderForm').style.display = 'block';
+    document.getElementById('successView').style.display = 'none';
+    document.getElementById('orderForm').reset();
+    
+    document.getElementById('checkoutOverlay').style.display = 'flex';
+  }
+
+  // 2. CLOSE CHECKOUT MODAL WINDOW
+  function closeCheckout() {
+    document.getElementById('checkoutOverlay').style.display = 'none';
+  }
+
+     // ===================================================
+  // 3. SUBMIT CLIENT DETAILS AUTOMATICALLY TO SHEET1
+  // ===================================================
+  function submitToGoogleSheet(event) {
+    event.preventDefault();
+    
+    const submitBtn = document.getElementById('submitFormBtn');
+    submitBtn.innerText = "Processing order...";
+    submitBtn.disabled = true;
+
+    const name = document.getElementById('custName').value;
+    const contact = document.getElementById('custContact').value;
+    const address = document.getElementById('custAddress').value;
+    const item = document.getElementById('trackerItemName').value;
+    const price = document.getElementById('trackerItemPrice').value;
+
+    const orderData = {
+      data: [
+        {
+          name: name,
+          contact: contact,
+          address: address,
+          item: item,
+          price: "₱" + price,
+          status: "Pending Verification"
+        }
+      ]
+    };
+
+    fetch(sheetDbApiUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(orderData)
+    })
+    .then(res => res.json())
+    .then(data => {
+      const calculatedDp = price / 2;
+      const receiptText = 
+        `Hi VAST ALWAYS! I just submitted my order on your website catalog.\n\n` +
+        `• Name: ${name}\n` +
+        `• Item: ${item}\n` +
+        `• Total: ₱${price}\n` +
+        `• 50% DP Due: ₱${calculatedDp}\n\n` +
+        `Attached is my transaction receipt screenshot.`;
+      
+      // 📋 COPIES AUTOMATICALLY: Saves the structured text to the client's phone/computer memory
+      navigator.clipboard.writeText(receiptText).then(() => {
+        console.log("Receipt details successfully copied to system clipboard.");
+      }).catch(err => console.error("Clipboard block error:", err));
+
+      // 👑 FIXED CLEAN APP LINK: Bypasses the Facebook security block to force direct chat launches 👑
+      document.getElementById('fbMessengerLink').href = "https://m.me/1275456905645538";
+      
+      document.getElementById('orderForm').style.display = 'none';
+      document.getElementById('successView').style.display = 'block';
+      
+      checkLiveInventoryStatus();
+    })
+    .catch(err => alert("Order submission encountered an issue. Please try again."))
+    .finally(() => {
+      submitBtn.innerText = "Submit Order Details";
+      submitBtn.disabled = false;
+    });
+  }
+
+
+  // 4. SCAN COLUMN E OF THE INVENTORY TAB IN REAL-TIME (FREE PLAN SYNTAX)
+  function checkLiveInventoryStatus() {
+    // Appending ?sheet=Inventory is the correct syntax for free accounts [1, 2]
+    fetch(`${sheetDbApiUrl}?sheet=Inventory`)
+      .then(response => {
+        if (!response.ok) throw new Error("API network fetch failure");
+        return response.json();
+      })
+      .then(stockRecords => {
+        console.log("Real-time stock calculations loaded from SheetDB:", stockRecords);
+        
+        if (!Array.isArray(stockRecords)) return;
+
+        stockRecords.forEach(row => {
+          // Explicitly checks column E header name ("status")
+          if (row.status && row.status.trim().toUpperCase() === "SOLD OUT") {
+            
+            // Locates the button carrying the matching data-product name tag
+            const targetButton = document.querySelector(`.cart-btn[data-product="${row.item}"]`);
+            
+            if (targetButton) {
+              targetButton.innerText = "Sold Out";
+              targetButton.disabled = true;
+              targetButton.style.backgroundColor = "#cccccc";
+              targetButton.style.color = "#ffffff";
+              targetButton.style.cursor = "not-allowed";
+              targetButton.style.boxShadow = "none";
+              targetButton.removeAttribute('onclick'); // Disables click window modal popups completely
+            }
+          }
+        });
+      })
+      .catch(err => console.error("Inventory check background sync failed:", err));
+  }
+
+  // Run the inventory check when the page finishes loading
+  window.addEventListener('DOMContentLoaded', checkLiveInventoryStatus);
+</script>
+
